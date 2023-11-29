@@ -2,6 +2,7 @@ package io.github.flybelt;
 
 import com.mojang.logging.LogUtils;
 
+import io.github.flybelt.effect.ModEffects;
 import io.github.flybelt.item.ModCreativeModTabs;
 import io.github.flybelt.item.ModItems;
 import net.minecraft.client.Minecraft;
@@ -37,6 +38,8 @@ public class FlybeltMod
         ModCreativeModTabs.register(modEventBus);
         
         ModItems.register(modEventBus);
+
+        ModEffects.register(modEventBus);
         
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
