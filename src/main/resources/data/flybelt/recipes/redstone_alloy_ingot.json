@@ -1,0 +1,11 @@
+{
+    "type": "minecraft:blasting",
+    "category": "misc",
+    "group": "redstone_alloy",
+    "ingredient": {
+        "item": "flybelt:raw_redstone_alloy"
+    },
+    "result": "flybelt:redstone_alloy_ingot",
+    "experience": 0.7,
+    "cookingtime": 200
+}

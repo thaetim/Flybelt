@@ -1,0 +1,32 @@
+# eclipse
+bin
+*.launch
+.settings
+.metadata
+.classpath
+.project
+
+# idea
+out
+*.ipr
+*.iws
+*.iml
+.idea
+
+# gradle
+build
+.gradle
+
+# other
+eclipse
+run
+todo.md
+notes.md
+Textures Creation/
+
+# Files from Forge MDK
+forge*changelog.txt
+
+# VS Code
+.vscode/
+*.code-workspace

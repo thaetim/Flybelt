@@ -1,0 +1,20 @@
+{
+    "type": "minecraft:crafting_shaped",
+    "category": "misc",
+    "pattern": [
+        "RGR",
+        "GRG",
+        "RGR"
+    ],
+    "key": {
+        "R": {
+            "item": "minecraft:redstone"
+        },
+        "G": {
+            "item": "minecraft:raw_gold"
+        }
+    },
+    "result": {
+        "item": "flybelt:raw_redstone_alloy"
+    }
+}
