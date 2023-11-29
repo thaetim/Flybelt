@@ -11,8 +11,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    REDSTONE_ALLOY("redstone_alloy", 25, new int[] { 1, 3, 2, 1 }, 25, 
-        SoundEvents.ARMOR_EQUIP_ELYTRA, 0.25f, 0f, () -> Ingredient.of(Items.REDSTONE_BLOCK));
+    REDSTONE_ALLOY("redstone_alloy", 25, new int[] { 1, 1, 1, 1 }, 25,
+            SoundEvents.ARMOR_EQUIP_ELYTRA, 0f, 0f, () -> Ingredient.of(Items.REDSTONE_BLOCK));
 
     private final String name;
     private final int durabilityMultiplier;
@@ -25,7 +25,8 @@ public enum ModArmorMaterials implements ArmorMaterial {
 
     private static final int[] BASE_DURABILITY = { 5, 8, 7, 6 };
 
-    ModArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability, SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
+    ModArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability,
+            SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
         this.name = name;
         this.durabilityMultiplier = durabilityMultiplier;
         this.protectionAmounts = protectionAmounts;
@@ -75,5 +76,5 @@ public enum ModArmorMaterials implements ArmorMaterial {
     public float getKnockbackResistance() {
         return this.knockbackResistance;
     }
-    
+
 }

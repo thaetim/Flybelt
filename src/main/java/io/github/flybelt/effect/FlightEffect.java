@@ -1,10 +1,12 @@
 package io.github.flybelt.effect;
 
+import io.github.flybelt.item.ModItems;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
 
 public class FlightEffect extends MobEffect {
 
@@ -38,7 +40,10 @@ public class FlightEffect extends MobEffect {
                 Player player = (Player) pLivingEntity;
                 if (!player.isCreative() && !player.isSpectator()) {
                     player.getAbilities().mayfly = false;
-                    player.getAbilities().flying = false;
+                    if (!ItemStack.isSameItem(player.getInventory().armor.get(2),
+                            new ItemStack(ModItems.FLYBELT.get()))) {
+                        player.getAbilities().flying = false;
+                    }
                     player.onUpdateAbilities();
                 }
             }
