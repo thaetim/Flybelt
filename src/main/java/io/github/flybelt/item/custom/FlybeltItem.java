@@ -18,8 +18,8 @@ public class FlybeltItem extends ArmorItem {
     private static final Map<ArmorMaterial, MobEffectInstance[]> MATERIAL_TO_EFFECT_MAP = ImmutableMap
             .<ArmorMaterial, MobEffectInstance[]>builder()
             .put(ModArmorMaterials.REDSTONE_ALLOY, new MobEffectInstance[] {
-                    new MobEffectInstance(MobEffects.HUNGER, 200, 10, false, false, true),
-                    new MobEffectInstance(ModEffects.FLIGHT.get(), 200, 2, true, true, true)
+                    new MobEffectInstance(MobEffects.HUNGER, 200, 5, false, false, false),
+                    new MobEffectInstance(ModEffects.FLIGHT.get(), 200, 2, false, false, false)
             })
             .build();
 
