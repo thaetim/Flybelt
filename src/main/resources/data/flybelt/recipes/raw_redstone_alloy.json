@@ -15,6 +15,7 @@
         }
     },
     "result": {
+        "count": 4,
         "item": "flybelt:raw_redstone_alloy"
     }
 }

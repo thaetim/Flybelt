@@ -4,10 +4,10 @@ import java.util.Map;
 
 import com.google.common.collect.ImmutableMap;
 
-import io.github.flybelt.effect.ModEffects;
+import io.github.flybelt.effect.ModMobEffects;
 import io.github.flybelt.item.ModArmorMaterials;
 import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
+// import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
@@ -18,8 +18,8 @@ public class FlybeltItem extends ArmorItem {
     private static final Map<ArmorMaterial, MobEffectInstance[]> MATERIAL_TO_EFFECT_MAP = ImmutableMap
             .<ArmorMaterial, MobEffectInstance[]>builder()
             .put(ModArmorMaterials.REDSTONE_ALLOY, new MobEffectInstance[] {
-                    new MobEffectInstance(MobEffects.HUNGER, 200, 5, false, false, false),
-                    new MobEffectInstance(ModEffects.FLIGHT.get(), 200, 2, false, false, false)
+                    // new MobEffectInstance(MobEffects.HUNGER, 200, 4, false, false, false),
+                    new MobEffectInstance(ModMobEffects.FLIGHT.get(), 100, 0, false, false, false)
             })
             .build();
 
