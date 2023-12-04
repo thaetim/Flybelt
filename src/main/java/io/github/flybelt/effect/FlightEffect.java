@@ -61,6 +61,8 @@ public class FlightEffect extends MobEffect {
                     }
                     // update ability changes
                     player.onUpdateAbilities();
+                } else {
+                    player.getAbilities().setFlyingSpeed(0.05f);
                 }
             }
         }
