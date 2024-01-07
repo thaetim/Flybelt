@@ -8,11 +8,19 @@ A small mod introducing a wearable belt granting creative-like (slower) flight i
 
 The Flybelt is crafted using a Gold Ingot, some Gold Nuggets and Phantom Membranes, and an Emerald Feather.
 
-![Flybelt item recipe preview](/.media/flybelt_recipe.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/thaetim/Flybelt/master/.media/flybelt_recipe_dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/thaetim/Flybelt/master/.media/flybelt_recipe_light.png">
+  <img alt="Flybelt item recipe preview.">
+</picture>
 
 The Emerald Feather is crafted by combining a feather with four emeralds.
 
-![Emerald feather item recipe preview](/.media/emerald_feather_recipe.png)
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/thaetim/Flybelt/master/.media/emerald_feather_recipe_dark.png">
+  <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/thaetim/Flybelt/master/.media/emerald_feather_recipe_light.png">
+  <img alt="Flybelt item recipe preview.">
+</picture>
 
 ### Enchanting with Levitation:
 
