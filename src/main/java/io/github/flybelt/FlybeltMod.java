@@ -3,6 +3,7 @@ package io.github.flybelt;
 // import com.mojang.logging.LogUtils;
 
 import io.github.flybelt.effect.ModMobEffects;
+import io.github.flybelt.enchantment.ModEnchantments;
 import io.github.flybelt.item.ModCreativeModTabs;
 import io.github.flybelt.item.ModItems;
 // import net.minecraft.client.Minecraft;
@@ -11,6 +12,7 @@ import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+// import net.minecraftforge.event.entity.player.PlayerContainerEvent;
 import net.minecraftforge.event.server.ServerStartingEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
@@ -39,6 +41,8 @@ public class FlybeltMod {
 
         ModMobEffects.register(modEventBus);
 
+        ModEnchantments.register(modEventBus);
+
         // Register the commonSetup method for modloading
         modEventBus.addListener(this::commonSetup);
 
@@ -65,8 +69,10 @@ public class FlybeltMod {
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
         if (event.getTabKey() == CreativeModeTabs.INGREDIENTS) {
-            event.accept(ModItems.RAW_REDSTONE_ALLOY);
-            event.accept(ModItems.REDSTONE_ALLOY_INGOT);
+            event.accept(ModItems.EMERALD_FEATHER);
+        }
+        if (event.getTabKey() == CreativeModeTabs.TOOLS_AND_UTILITIES) {
+            event.accept(ModItems.FLYBELT);
         }
     }
 
@@ -89,4 +95,5 @@ public class FlybeltMod {
             // Minecraft.getInstance().getUser().getName());
         }
     }
+
 }

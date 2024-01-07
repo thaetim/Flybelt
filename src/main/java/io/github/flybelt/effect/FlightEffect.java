@@ -1,5 +1,6 @@
 package io.github.flybelt.effect;
 
+import io.github.flybelt.enchantment.ModEnchantments;
 import io.github.flybelt.item.ModItems;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -11,21 +12,23 @@ import net.minecraft.world.item.ItemStack;
 
 public class FlightEffect extends MobEffect {
 
+    private float defaultFlightSpeed = 0.06f;
+
     protected FlightEffect(MobEffectCategory pCategory, int pColor) {
         super(pCategory, pColor);
     }
 
-    private int sumArmorProtection(Player player) {
-        int armorWeight = 0;
+    private int sumArmorDefense(Player player) {
+        int armorDefenseSum = 0;
 
         for (ItemStack armorSlot : player.getArmorSlots()) {
             if (armorSlot.getItem() instanceof ArmorItem) {
                 ArmorItem armorPiece = (ArmorItem) armorSlot.getItem();
-                armorWeight = armorWeight + armorPiece.getDefense();
+                armorDefenseSum = armorDefenseSum + armorPiece.getDefense();
             }
         }
 
-        return armorWeight;
+        return armorDefenseSum;
     }
 
     @Override
@@ -33,36 +36,41 @@ public class FlightEffect extends MobEffect {
         if (!pLivingEntity.level().isClientSide()) {
             if (pLivingEntity instanceof Player) {
                 Player player = (Player) pLivingEntity;
-                if (!player.isCreative() && !player.isSpectator()) {
+                // System.out.println(player.getAbilities().getFlyingSpeed());
+                if (!player.isCreative() && !player.isSpectator() && (player.getInventory().armor.get(2)
+                        .getEnchantmentLevel(ModEnchantments.LEVITATION.get()) > 0)) {
+
                     // flying ability logic
                     if (player.fallDistance > 3.0) {
                         player.getAbilities().mayfly = false;
                     } else {
                         player.getAbilities().mayfly = true;
                         /*
-                         * assuming creative flying speed is 2.5x walking speed
-                         * here flying speed should be = walking speed for armor defense = 1
+                         * scaling flight speed depending on currently worn armor
                          * 
                          * hyperbolic function scaled so that if
-                         * sum of protection = 0, then fly speed = 0.02F (default flying speed)
-                         * sum of protection = 1 (default for only flybelt worn), fly speed = 0.008F
-                         * (default walking speed ~ 0.4 * creative flying speed)
+                         * sum of defense = 0, then fly speed = 0.02F (should be the default flying
+                         * speed)
+                         * sum of defense = 1 (default for only flybelt worn), fly speed = 0.008F
+                         * (assuming default walking speed ~ 0.4 * creative flying speed)
+                         * 
                          * amplifier 1 ~ x1
                          * amplifier 2 ~ x1.5
                          * amplifier 3 ~ x2
                          */
                         player.getAbilities().setFlyingSpeed((1.0F + ((float) pAmplifier / 2.0F))
-                                / (float) (75 * sumArmorProtection(player) + 50));
+                                / (float) (75 * sumArmorDefense(player) + 50));
                     }
                     // hunger penalty logic
                     if (player.getAbilities().flying) {
-                        // starting from 4x standard hunger and going up normally from there
+                        // starting from 4x standard hunger and scaling up with amplifier normally from
+                        // there
                         player.causeFoodExhaustion(0.005F * (float) (pAmplifier + 5));
                     }
                     // update ability changes
                     player.onUpdateAbilities();
                 } else {
-                    player.getAbilities().setFlyingSpeed(0.05f);
+                    player.getAbilities().setFlyingSpeed(defaultFlightSpeed);
                 }
             }
         }
@@ -79,15 +87,14 @@ public class FlightEffect extends MobEffect {
         if (!pLivingEntity.level().isClientSide()) {
             if (pLivingEntity instanceof Player) {
                 Player player = (Player) pLivingEntity;
-                if (!player.isCreative() && !player.isSpectator()) {
-                    player.getAbilities().mayfly = false;
-                    if (!ItemStack.isSameItem(player.getInventory().armor.get(2),
-                            new ItemStack(ModItems.FLYBELT.get()))) {
+                if (!player.getInventory().armor.get(2).getItem().equals(ModItems.FLYBELT.get())) {
+                    player.getAbilities().setFlyingSpeed(defaultFlightSpeed);
+                    if (!player.isCreative() && !player.isSpectator()) {
+                        player.getAbilities().mayfly = false;
                         player.getAbilities().flying = false;
-                        player.getAbilities().setFlyingSpeed(0.05f);
                     }
-                    player.onUpdateAbilities();
                 }
+                player.onUpdateAbilities();
             }
         }
         super.removeAttributeModifiers(pLivingEntity, pAttributeMap, pAmplifier);

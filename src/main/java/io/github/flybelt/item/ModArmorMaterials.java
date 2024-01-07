@@ -11,7 +11,7 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 
 public enum ModArmorMaterials implements ArmorMaterial {
-    REDSTONE_ALLOY("redstone_alloy", 25, new int[] { 1, 1, 1, 1 }, 25,
+    FLYBELT_MATERIAL("flybelt_material", 25, new int[] { 1, 1, 1, 1 }, 25,
             SoundEvents.ARMOR_EQUIP_ELYTRA, 0f, 0f, () -> Ingredient.of(Items.REDSTONE_BLOCK));
 
     private final String name;

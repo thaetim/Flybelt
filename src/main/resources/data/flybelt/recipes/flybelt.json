@@ -2,16 +2,22 @@
     "type": "minecraft:crafting_shaped",
     "category": "equipment",
     "pattern": [
-        "RLR",
-        "LRL",
-        "RLR"
+        "N N",
+        "EGE",
+        "PPP"
     ],
     "key": {
-        "R": {
-            "item": "flybelt:redstone_alloy_ingot"
+        "P": {
+            "item": "minecraft:phantom_membrane"
         },
-        "L": {
-            "item": "minecraft:chain"
+        "E": {
+            "item": "flybelt:emerald_feather"
+        },
+        "G": {
+            "item": "minecraft:gold_ingot"
+        },
+        "N": {
+            "item": "minecraft:gold_nugget"
         }
     },
     "result": {
