@@ -19,7 +19,7 @@ The Emerald Feather is crafted by combining a feather with four emeralds.
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/thaetim/Flybelt/master/.media/emerald_feather_recipe_dark.png">
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/thaetim/Flybelt/master/.media/emerald_feather_recipe_light.png">
-  <img alt="Flybelt item recipe preview.">
+  <img alt="Emerald Feather item recipe preview.">
 </picture>
 
 ### Enchanting with Levitation:
