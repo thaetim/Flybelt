@@ -12,7 +12,7 @@ import net.minecraft.world.item.ItemStack;
 
 public class FlightEffect extends MobEffect {
 
-    private float defaultFlightSpeed = 0.06f;
+    private float defaultFlightSpeed = 0.05f;
 
     protected FlightEffect(MobEffectCategory pCategory, int pColor) {
         super(pCategory, pColor);
@@ -49,17 +49,11 @@ public class FlightEffect extends MobEffect {
                          * scaling flight speed depending on currently worn armor
                          * 
                          * hyperbolic function scaled so that if
-                         * sum of defense = 0, then fly speed = 0.02F (should be the default flying
-                         * speed)
-                         * sum of defense = 1 (default for only flybelt worn), fly speed = 0.008F
-                         * (assuming default walking speed ~ 0.4 * creative flying speed)
-                         * 
-                         * amplifier 1 ~ x1
-                         * amplifier 2 ~ x1.5
-                         * amplifier 3 ~ x2
+                         * armor defense = 1 (only flybelt) and amplifier = 3
+                         * then speed = 0.05f (default for creative mode)
                          */
-                        player.getAbilities().setFlyingSpeed((1.0F + ((float) pAmplifier / 2.0F))
-                                / (float) (75 * sumArmorDefense(player) + 50));
+                        player.getAbilities().setFlyingSpeed((float) (1 + (pAmplifier / 2))
+                                / (float) (20 * (1.5 * sumArmorDefense(player) + 1)));
                     }
                     // hunger penalty logic
                     if (player.getAbilities().flying) {
