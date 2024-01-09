@@ -2,11 +2,19 @@
 
 A small mod introducing a wearable belt granting creative-like (slower) flight in exchange for hunger. Designed primarily as a way for having a balanced option for flying in survival.
 
-## Features:
+### Features:
 
-### Crafting Flybelt:
+- Flight speed is slower than in creative-mode.
+- Being in air depletes the hunger.
+- Player still takes falling damage as normal.
+- Wearing other armor pieces proportionally slows the flight even more.
+- Introducing Levitation as an armor enchantment. Every time you put on an armor piece with this enchantment you will be given the standard Levitation effect.
+- The belt has to be enchanted with Levitation to actually give the Flight effect.
+- Higher Levitation levels increase the flying speed.
 
-The Flybelt is crafted using a Gold Ingot, some Gold Nuggets and Phantom Membranes, and an Emerald Feather.
+### Crafting:
+
+The Flybelt is crafted using a Gold Ingot, Gold Nuggets, Phantom Membranes and an Emerald Feather.
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/thaetim/Flybelt/master/.media/flybelt_recipe_dark.png">
@@ -21,23 +29,6 @@ The Emerald Feather is crafted by combining a feather with four emeralds.
   <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/thaetim/Flybelt/master/.media/emerald_feather_recipe_light.png">
   <img alt="Emerald Feather item recipe preview.">
 </picture>
-
-### Enchanting with Levitation:
-
-To enable flight, players must enchant the belt with the Levitation enchantment. The mod introduces two levels of Levitation enchantment:
-
-- Levitation (Level I)
-- Levitation (Level II)
-
-Level II grants faster flight, however, it's crucial to note that the flight effect does not mitigate falling damage, so caution is advised during airborne adventures.
-
-### Flight Restrictions:
-
-While wearing the Flybelt, any other worn armor will considerably slow down the flight.
-
-## Compatibility:
-
-Currently supporting 1.20.1.
 
 ## Support and Feedback:
 
