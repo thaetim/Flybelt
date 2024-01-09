@@ -4,13 +4,13 @@ A small mod introducing a wearable belt granting creative-like (slower) flight i
 
 ### Features:
 
-- Flight speed is slower than in creative-mode.
+- Flight speed is slower than in creative mode.
 - Being in air depletes the hunger.
 - Player still takes falling damage as normal.
 - Wearing other armor pieces proportionally slows the flight even more.
-- Introducing Levitation as an armor enchantment. Every time you put on an armor piece with this enchantment you will be given the standard Levitation effect.
+- Introducing Levitation as an armor enchantment, every time you put on an armor piece with this enchantment you will be given the standard Levitation effect unless it is the Flybelt.
 - The belt has to be enchanted with Levitation to actually give the Flight effect.
-- Higher Levitation levels increase the flying speed.
+- Higher Levitation levels increase the flying speed. Levitation III and no other armor results in creative mode speed.
 
 ### Crafting:
 
