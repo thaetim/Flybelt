@@ -32,7 +32,7 @@ public class LevitationEnchantment extends Enchantment {
 
             // add levitation effect unless already added or wearing the flybelt
             if (!player.hasEffect(MobEffects.LEVITATION) && (levitationEnchantmentLevel > 0)
-                    && (player.getInventory().armor.get(2).getItem() != ModItems.FLYBELT.get())) {
+                    && (player.getItemBySlot(EquipmentSlot.LEGS).getItem() != ModItems.FLYBELT.get())) {
                 player.addEffect(new MobEffectInstance(MobEffects.LEVITATION, 100 * levitationEnchantmentLevel,
                         levitationEnchantmentLevel - 1));
             }

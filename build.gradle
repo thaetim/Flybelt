@@ -87,6 +87,12 @@ minecraft {
             property 'forge.enabledGameTestNamespaces', mod_id
         }
 
+        // Client with debug port - run task, then use "Attach to Minecraft"
+        clientDebug {
+            parent runs.client
+            jvmArgs '-agentlib:jdwp=transport=dt_socket,server=y,suspend=y,address=*:5005'
+        }
+
         server {
             property 'forge.enabledGameTestNamespaces', mod_id
             args '--nogui'

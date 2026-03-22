@@ -18,8 +18,8 @@ public class ModItems {
                         () -> new Item(new Properties()));
 
         public static final RegistryObject<Item> FLYBELT = ITEMS.register("flybelt",
-                        () -> new FlybeltItem(ModArmorMaterials.FLYBELT_MATERIAL, ArmorItem.Type.CHESTPLATE,
-                                        new Item.Properties()));
+() -> new FlybeltItem(ModArmorMaterials.FLYBELT_MATERIAL, ArmorItem.Type.LEGGINGS,
+                        new Item.Properties()));
 
         public static void register(IEventBus eventBus) {
                 ITEMS.register(eventBus);

@@ -4,6 +4,7 @@ import io.github.flybelt.enchantment.ModEnchantments;
 import io.github.flybelt.item.ModItems;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
+import net.minecraft.world.entity.EquipmentSlot;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.ai.attributes.AttributeMap;
 import net.minecraft.world.entity.player.Player;
@@ -37,7 +38,7 @@ public class FlightEffect extends MobEffect {
             if (pLivingEntity instanceof Player) {
                 Player player = (Player) pLivingEntity;
                 // System.out.println(player.getAbilities().getFlyingSpeed());
-                if (!player.isCreative() && !player.isSpectator() && (player.getInventory().armor.get(2)
+                if (!player.isCreative() && !player.isSpectator() && (player.getItemBySlot(EquipmentSlot.LEGS)
                         .getEnchantmentLevel(ModEnchantments.LEVITATION.get()) > 0)) {
 
                     // flying ability logic
@@ -81,7 +82,7 @@ public class FlightEffect extends MobEffect {
         if (!pLivingEntity.level().isClientSide()) {
             if (pLivingEntity instanceof Player) {
                 Player player = (Player) pLivingEntity;
-                if (!player.getInventory().armor.get(2).getItem().equals(ModItems.FLYBELT.get())) {
+                if (!player.getItemBySlot(EquipmentSlot.LEGS).getItem().equals(ModItems.FLYBELT.get())) {
                     player.getAbilities().setFlyingSpeed(defaultFlightSpeed);
                     if (!player.isCreative() && !player.isSpectator()) {
                         player.getAbilities().mayfly = false;
