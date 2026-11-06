@@ -1,80 +1,40 @@
 package io.github.flybelt.item;
 
-import com.google.common.base.Supplier;
-
 import io.github.flybelt.FlybeltMod;
-import net.minecraft.sounds.SoundEvent;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
-import net.minecraft.world.item.ArmorItem.Type;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.ArmorMaterial;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.neoforged.bus.api.IEventBus;
+import net.neoforged.neoforge.registries.DeferredHolder;
+import net.neoforged.neoforge.registries.DeferredRegister;
 
-public enum ModArmorMaterials implements ArmorMaterial {
-    FLYBELT_MATERIAL("flybelt_material", 25, new int[] { 1, 1, 1, 1 }, 25,
-            SoundEvents.ARMOR_EQUIP_ELYTRA, 0f, 0f, () -> Ingredient.of(Items.REDSTONE_BLOCK));
+import java.util.EnumMap;
+import java.util.List;
+import java.util.Map;
 
-    private final String name;
-    private final int durabilityMultiplier;
-    private final int[] protectionAmounts;
-    private final int enchantability;
-    private final SoundEvent equipSound;
-    private final float toughness;
-    private final float knockbackResistance;
-    private final Supplier<Ingredient> repairIngredient;
+public class ModArmorMaterials {
+    public static final DeferredRegister<ArmorMaterial> ARMOR_MATERIALS = DeferredRegister.create(Registries.ARMOR_MATERIAL,
+            FlybeltMod.MODID);
 
-    private static final int[] BASE_DURABILITY = { 5, 8, 7, 6 };
+    public static final DeferredHolder<ArmorMaterial, ArmorMaterial> FLYBELT_MATERIAL = ARMOR_MATERIALS.register("flybelt_material",
+            () -> new ArmorMaterial(defense(), 25, SoundEvents.ARMOR_EQUIP_ELYTRA,
+                    () -> Ingredient.of(Items.REDSTONE_BLOCK),
+                    List.of(new ArmorMaterial.Layer(ResourceLocation.fromNamespaceAndPath(FlybeltMod.MODID, "flybelt_material"))),
+                    0.0F, 0.0F));
 
-    ModArmorMaterials(String name, int durabilityMultiplier, int[] protectionAmounts, int enchantability,
-            SoundEvent equipSound, float toughness, float knockbackResistance, Supplier<Ingredient> repairIngredient) {
-        this.name = name;
-        this.durabilityMultiplier = durabilityMultiplier;
-        this.protectionAmounts = protectionAmounts;
-        this.enchantability = enchantability;
-        this.equipSound = equipSound;
-        this.toughness = toughness;
-        this.knockbackResistance = knockbackResistance;
-        this.repairIngredient = repairIngredient;
+    private static Map<ArmorItem.Type, Integer> defense() {
+        EnumMap<ArmorItem.Type, Integer> defense = new EnumMap<>(ArmorItem.Type.class);
+        for (ArmorItem.Type type : ArmorItem.Type.values()) {
+            defense.put(type, 1);
+        }
+        return defense;
     }
 
-    @Override
-    public int getDurabilityForType(Type type) {
-        return BASE_DURABILITY[type.ordinal()] * this.durabilityMultiplier;
+    public static void register(IEventBus eventBus) {
+        ARMOR_MATERIALS.register(eventBus);
     }
-
-    @Override
-    public int getDefenseForType(Type type) {
-        return protectionAmounts[type.ordinal()];
-    }
-
-    @Override
-    public int getEnchantmentValue() {
-        return this.enchantability;
-    }
-
-    @Override
-    public SoundEvent getEquipSound() {
-        return this.equipSound;
-    }
-
-    @Override
-    public Ingredient getRepairIngredient() {
-        return this.repairIngredient.get();
-    }
-
-    @Override
-    public String getName() {
-        return FlybeltMod.MODID + ":" + this.name;
-    }
-
-    @Override
-    public float getToughness() {
-        return this.toughness;
-    }
-
-    @Override
-    public float getKnockbackResistance() {
-        return this.knockbackResistance;
-    }
-
 }

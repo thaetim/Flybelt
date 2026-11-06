@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "pattern": [
+    " E ",
+    "EXE",
+    " E "
+  ],
+  "key": {
+    "X": {
+      "item": "minecraft:feather"
+    },
+    "E": {
+      "item": "minecraft:emerald"
+    }
+  },
+  "result": {
+    "count": 1,
+    "id": "flybelt:emerald_feather"
+  }
+}

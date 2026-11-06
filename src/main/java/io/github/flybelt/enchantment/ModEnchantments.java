@@ -1,23 +1,25 @@
 package io.github.flybelt.enchantment;
 
 import io.github.flybelt.FlybeltMod;
-import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.EnchantmentCategory;
-import net.minecraftforge.eventbus.api.IEventBus;
-import net.minecraftforge.registries.DeferredRegister;
-import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
+import net.minecraft.world.level.Level;
 
-public class ModEnchantments {
-    public static final DeferredRegister<Enchantment> ENCHANTMENTS = DeferredRegister
-            .create(ForgeRegistries.ENCHANTMENTS, FlybeltMod.MODID);
+public final class ModEnchantments {
+    public static final ResourceKey<Enchantment> LEVITATION = ResourceKey.create(Registries.ENCHANTMENT,
+            ResourceLocation.fromNamespaceAndPath(FlybeltMod.MODID, "levitation"));
 
-    public static RegistryObject<Enchantment> LEVITATION = ENCHANTMENTS.register("levitation",
-            () -> new LevitationEnchantment(Enchantment.Rarity.UNCOMMON, EnchantmentCategory.ARMOR, EquipmentSlot.HEAD,
-                    EquipmentSlot.CHEST, EquipmentSlot.LEGS, EquipmentSlot.FEET));
+    private ModEnchantments() {
+    }
 
-    public static void register(IEventBus eventBus) {
-        ENCHANTMENTS.register(eventBus);
+    public static int getLevel(Level level, ItemStack stack) {
+        Registry<Enchantment> enchantments = level.registryAccess().registryOrThrow(Registries.ENCHANTMENT);
+        return enchantments.getHolder(LEVITATION)
+                .map(stack::getEnchantmentLevel)
+                .orElse(0);
     }
 }
